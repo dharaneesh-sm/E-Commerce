@@ -3,7 +3,7 @@ const Product = require("../models/product");
 //To Create an New Product
 const addProduct = async (req,res) => {
     try {
-        const { name, description, price, category, stock, image } = req.body;
+        const { name, description, price, category } = req.body;
     
         const newProduct = new Product({
           name,
@@ -49,6 +49,7 @@ const getProductById = async (req, res) => {
 const updateProduct = async (req, res) => {
     try {
       const { id } = req.params;
+      console.log(req.body);
       const updatedProduct = await Product.findByIdAndUpdate(id, req.body, { 
         new: true,
         runValidators: true
